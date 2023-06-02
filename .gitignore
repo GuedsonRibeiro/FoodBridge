@@ -21,3 +21,4 @@ private_key.pem
 # Arquivos específicos da infraestrutura
 /infra/terraform/terraform.tfstate*
 /infra/terraform/.terraform/
+/infra/terraform/terraform.tfvars/
