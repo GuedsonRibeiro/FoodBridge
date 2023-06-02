@@ -5,10 +5,10 @@ FROM python:latest
 WORKDIR /app
 
 # Copia o arquivo de requisitos e os arquivos do projeto para o contêiner
-COPY requirements.txt .
-COPY app.py .
-COPY /static /app/static
-COPY /templates /app/templates
+COPY backend/requirements.txt .
+COPY backend/app.py .
+COPY frontend/public /app/static
+COPY frontend/src /app/templates
 
 # Atualiza o pip e instala as dependências
 RUN pip install --upgrade pip

@@ -1,0 +1,23 @@
+# Arquivos e diretórios a serem ignorados no controle de versão
+
+# Arquivos gerados pela aplicação
+*.pyc
+__pycache__/
+
+# Arquivos gerados pelo ambiente de desenvolvimento
+.idea/
+.vscode/
+
+# Arquivos gerados pelo sistema operacional
+.DS_Store
+
+# Diretório de dependências do Python
+venv/
+
+# Arquivos de configuração e chaves privadas (não versionar esses arquivos!)
+config.py
+private_key.pem
+
+# Arquivos específicos da infraestrutura
+/infra/terraform/terraform.tfstate*
+/infra/terraform/.terraform/

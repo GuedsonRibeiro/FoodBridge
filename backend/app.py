@@ -3,7 +3,7 @@ import mysql.connector
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 
-app = Flask(__name__, template_folder='templates', static_folder='static')
+app = Flask(__name__, static_folder='frontend/public', static_url_path='/static')
 
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
@@ -78,19 +78,19 @@ def insert_doacao(doacao):
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return app.send_static_file('index.html')
 
 @app.route('/cadastro-doador')
 def cadastro_doador():
-    return render_template('cadastro-doador.html')
+    return app.send_static_file('cadastro-doador.html')
 
 @app.route('/cadastro-organizacao')
 def cadastro_organizacao():
-    return render_template('cadastro-organizacao.html')
+    return app.send_static_file('cadastro-organizacao.html')
 
 @app.route('/doacoes')
 def doacoes():
-    return render_template('doacoes.html')
+    return app.send_static_file('doacoes.html')
 
 @app.route('/api/cadastro-doador', methods=['POST'])
 def api_cadastro_doador():
