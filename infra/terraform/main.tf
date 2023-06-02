@@ -2,6 +2,14 @@ provider "aws" {
   region = var.region
 }
 
+terraform {
+  backend "s3" {
+    bucket = "my-tfstate-bucket-guedson"
+    key    = "terraform.tfstate"
+    region = "us-west-2"
+  }
+}
+
 module "ec2" {
   source = "./modules/ec2"
   public_subnet_id = module.network.public_subnet_id
