@@ -1,5 +1,3 @@
-# A basic RDS module - please modify to your needs
-
 resource "aws_db_instance" "default" {
   allocated_storage    = 20
   storage_type         = "gp2"
@@ -11,8 +9,14 @@ resource "aws_db_instance" "default" {
   password             = "foobarbaz"
   parameter_group_name = "default.mysql5.7"
   skip_final_snapshot  = true
+  vpc_security_group_ids = [var.db_sg_id]
+  subnet_group_name   = aws_db_subnet_group.default.name
 }
 
-output "rds_endpoint" {
-  value = aws_db_instance.default.endpoint
+resource "aws_db_subnet_group" "default" {
+  name       = "default"
+  subnet_ids = [var.private_subnet_id]
 }
+
+variable "private_subnet_id" {}
+variable "db_sg_id" {}
